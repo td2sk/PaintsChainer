@@ -109,7 +109,8 @@ class LNET(chainer.Chain):
         return [e0, e2, e4, e6, e7, e8]
 
     def calc(self, x, test=False):
-        e0, e2, e4, e6, e7, e8 = self.enc(x)
+        e = self.enc(x)
+        e0, e2, e4, e6, e7, e8 = e
 
         d8 = F.relu(self.bnd8(self.dc8(F.concat([e7, e8])), test=test))
         del e7, e8
